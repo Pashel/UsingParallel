@@ -1,17 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System;
+using System.Threading.Tasks;
 
-namespace ParallelProject
+namespace ParallelProject.Services
 {
     class FileMatrixProvider
     {
-        public int[,] GetMatrix(string path)
+        public async Task<int[,]> GetMatrixAsync(string path)
         {
             var fileLines = new List<string>();
             using (var reader = new StreamReader(path, Encoding.UTF8)) {
                 string line;
-                while ((line = reader.ReadLine()) != null) {
+                while ((line = await reader.ReadLineAsync()) != null) {
                     fileLines.Add(line);
                 }
             }
@@ -20,8 +22,12 @@ namespace ParallelProject
             int columnsCount = ParseString(fileLines[0]).Length;
             int[,] matrix = new int[rowsCount, columnsCount];
 
+            // fill matrix with file strings
             for (var rowNum = 0; rowNum < fileLines.Count; rowNum++) {
                 var elementsInString = ParseString(fileLines[rowNum]);
+                if (elementsInString.Length != columnsCount) {
+                    throw new Exception("Incorrect matrix format");
+                }
                 for (var columnNum = 0; columnNum < elementsInString.Length; columnNum++) {
                     matrix[rowNum, columnNum] = elementsInString[columnNum];
                 }

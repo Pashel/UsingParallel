@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileMatrixProvider.cs" />
-    <Compile Include="MatrixOperations.cs" />
+    <Compile Include="Services\FileMatrixProvider.cs" />
+    <Compile Include="Services\MatrixOperations.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

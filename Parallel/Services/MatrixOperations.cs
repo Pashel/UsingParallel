@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace ParallelProject
+namespace ParallelProject.Services
 {
     class MatrixOperations
     {
