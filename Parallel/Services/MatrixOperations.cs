@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace ParallelProject.Services
 {
-    class MatrixOperations
+    public class MatrixOperations
     {
         public int[,] Multiply(int[,] matrix1, int[,] matrix2)
         {

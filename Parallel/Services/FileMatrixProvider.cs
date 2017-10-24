@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ParallelProject.Services
 {
-    class FileMatrixProvider
+    public class FileMatrixProvider
     {
         public async Task<int[,]> GetMatrixAsync(string path)
         {
@@ -16,6 +16,10 @@ namespace ParallelProject.Services
                 while ((line = await reader.ReadLineAsync()) != null) {
                     fileLines.Add(line);
                 }
+            }
+
+            if (fileLines.Count == 0) {
+                throw new Exception("Empty file passed");
             }
 
             int rowsCount = fileLines.Count;
