@@ -10,6 +10,7 @@ namespace ParallelProject.Services
     {
         public async Task<int[,]> GetMatrixAsync(string path)
         {
+            // read matrix lines from file
             var fileLines = new List<string>();
             using (var reader = new StreamReader(path, Encoding.UTF8)) {
                 string line;
@@ -17,7 +18,6 @@ namespace ParallelProject.Services
                     fileLines.Add(line);
                 }
             }
-
             if (fileLines.Count == 0) {
                 throw new Exception("Empty file passed");
             }
